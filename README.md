@@ -4,7 +4,7 @@
 
 * Making React components
 * Making Ajax requests
-* Storing cookies
+* Using localStorage
 * Creating multiple-view React applications
 * Using React Router
 
