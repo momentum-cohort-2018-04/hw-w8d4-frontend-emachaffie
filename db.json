@@ -1,6 +1,8 @@
 {
   "contacts": [
-    {"id": 1},
-    {"id": 2}
+    {"id": 1, "name": "Harry Potter", "email": "hpotter@hogwarts.magic", "address": "4 Privet Drive, Little Whinging, Surrey", "house": "Gryffindor", "birthday": "July 31, 1980", "company": "Ministry of Magic", "title": "Auror"},
+    {"id": 2, "name": "Hermione Granger", "email": "hgranger@hogwarts.magic", "address": "Heathgate, Hampstead", "house": "Gryffindor", "birthday": "September 19, 1979", "company": "Ministry of Magic", "title": "Minister for Magic"},
+    {"id": 3, "name": "Luna Lovegood", "email": "llovegood@hogwarts.magic", "address": "102 Pandora Drive, Ottery St Catchpole", "house": "Ravenclaw", "birthday": "February 13, 1981", "company": "Ministry of Magical Creatures", "title": "Magizoologist"},
+    {"id": 4, "name": "Ron Weasley", "email": "rweasley@hogwarts.magic", "address": "The Burrow, Ottery St Catchpole", "house": "Gryffindor", "birthday": "March 1, 1980", "company": "Weasley's Wizard Wheezes", "title": "Co-Manager"}
   ]
 }
