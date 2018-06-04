@@ -5,6 +5,8 @@ import React, { Component } from 'react'
 class LoginPage extends Component {
   constructor (props) {
     super()
+    // this.loggedIn = this.loggedIn.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   passwordSubmit (event) {
@@ -16,6 +18,7 @@ class LoginPage extends Component {
   }
 
   handleSubmit (event) {
+    debugger
     event.preventDefault()
     console.log('submitted')
     this.props.loggedIn = true

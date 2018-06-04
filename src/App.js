@@ -32,7 +32,7 @@ class App extends Component {
         ) : (
           <div>
             <h1>Future Password Form</h1>
-            <LoginPage />
+            <LoginPage loggedIn={this.state.loggedIn} />
           </div>)}
       </div>
     )
