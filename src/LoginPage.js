@@ -25,6 +25,8 @@ class LoginPage extends Component {
     }
   }
 
+  // render with prop onLogin?
+
   render () {
     return (
       <div className='loginForm'>

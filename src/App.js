@@ -13,17 +13,28 @@ class App extends Component {
       password: localStorage.password,
       username: localStorage.username,
       loggedIn: false
+      // Could set state to show particular piece based on what was clicked, would need a conditional statement below
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
   }
 
+  // Component did mount, get request user and password from state, 
+  // check it's authorized/valid
+  // If valid, set logged in to true
+  // if not valid, show login screen
+
+  // render
+  // if loading show spinner
+  // if logged in show Contacts
+  // else show LoginPage
+
   changeLoggedInStatus () {
-    this.setState({loggedIn: true})
+    if (this.state.password && this.state.username) {
+      this.setState({loggedIn: true})
+    }
   }
 
   render () {
-    let password = this.state.password
-    let username = this.state.username
     let loggedIn = this.state.loggedIn
     return (
       <div>

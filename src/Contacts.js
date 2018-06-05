@@ -15,14 +15,13 @@ class Contacts extends Component {
       contactList: []
     }
     this.getContacts = this.getContacts.bind(this)
+    this.deleteContact = this.deleteContact.bind(this)
   }
 
-  // Call at componentDidmount or will looooop
   componentDidMount () {
     this.getContacts()
   }
   getContacts () {
-    // event.preventDefault()
     request
       .get(`http://localhost:8000/contacts/`)
       .auth(this.props.username, this.props.password)
@@ -31,6 +30,22 @@ class Contacts extends Component {
         console.log(contactListArray)
         this.setState({contactList: contactListArray})
         console.log(this.state.contactList)
+        console.log(this.props.password)
+      })
+  }
+
+  deleteContact (id) {
+    console.log(id.target.id)
+    console.log(this.props.password)
+    let contactId = id.target.id
+    request
+      .delete(`http://localhost:8000/contacts/${contactId}`)
+      .auth(this.props.username, this.props.password)
+      .then(response => {
+        console.log('deleted')
+        this.setState(prevState => ({
+          contactList: prevState.contactList.filter(contact => contact.id !== contactId)})
+        )
       })
   }
 
@@ -40,7 +55,8 @@ class Contacts extends Component {
       <div className='contactListDisplay'>
         <h1>Accio Contacts</h1>
         <p>Keep Track of Your Magical and Muggle Friends</p>
-        <button className='addContact'>Add Contact</button>
+        <button className='addContact' // onClick={<AddContact />}//
+        >Add Contact</button>
         {this.state.contactList.map((contact, i) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
@@ -51,8 +67,11 @@ class Contacts extends Component {
             <p className='company'><span className='textSpan'>Organization: </span>{contact.company}</p>
             <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
             <div>
-              <button className='editButton' onClick={<EditContact />}>Edit</button>
-              <button className='deleteButton' onClick={<DeleteContact currentContact={this.state.contactList.contact} />}>Delete</button>
+              <button className='editButton' //onClick={<EditContact {contactList=this.state.contactList} />}//
+              >Edit</button>
+              <button className='deleteButton' id={contact.id} onClick={this.deleteContact}
+              >Delete</button>
+              {console.log(contact.id)}
             </div>
           </div>
         )
@@ -61,26 +80,5 @@ class Contacts extends Component {
     )
   }
 }
-
-// runSearch (event) {
-//   event.preventDefault()
-//   console.log(this.state.searchInput)
-//   request
-//     .get(`https://api.unsplash.com/search/photos?client_id=${accessKey}&query=${this.state.searchInput}`)
-//     .then(response => {
-//       let searchResults = response.body.results
-//       // console.log(searchResults)
-//       if (searchResults.length === 0) {
-//         this.setState({
-//           noSearchResults: 'Sorry, no photos were found.'
-//         })
-//       } else {
-//         this.setState({
-//           photoArray: searchResults})
-//         this.setState({
-//           noSearchResults: ''
-//         })
-//       }
-//     })
 
 export default Contacts
