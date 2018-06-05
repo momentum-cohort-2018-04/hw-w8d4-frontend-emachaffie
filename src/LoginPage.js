@@ -18,16 +18,17 @@ class LoginPage extends Component {
   }
 
   handleSubmit (event) {
-    debugger
     event.preventDefault()
     console.log('submitted')
-    this.props.loggedIn = true
+    if (this.props.password !== null && this.props.username !== null) {
+      this.props.loggedIn()
+    }
   }
 
   render () {
     return (
       <div className='loginForm'>
-        <h2>Please Log In</h2>
+        <h2>Accio Contacts Log In</h2>
         <form onSubmit={this.handleSubmit}>
           Username: <input type='text' name='username' onChange={this.usernameSubmit} />
           Password: <input type='text' name='password' onChange={this.passwordSubmit} />

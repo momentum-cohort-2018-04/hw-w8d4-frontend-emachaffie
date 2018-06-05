@@ -2,3 +2,23 @@
   box-sizing: border-box;
 }
 
+
+/* Contact Displays */
+
+.contactListDisplay {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactDiv {
+  margin: 15px 20px;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.textSpan {
+  font-weight: 700;
+  font-size: 1rem;
+}

@@ -10,11 +10,15 @@ class App extends Component {
   constructor (props) {
     super()
     this.state = {
-      contactList: localStorage.contacts,
       password: localStorage.password,
       username: localStorage.username,
       loggedIn: false
     }
+    this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
+  }
+
+  changeLoggedInStatus () {
+    this.setState({loggedIn: true})
   }
 
   render () {
@@ -23,16 +27,13 @@ class App extends Component {
     let loggedIn = this.state.loggedIn
     return (
       <div>
-        {(password && username && loggedIn) ? (
+        {(loggedIn) ? (
           <div className='contactHomePage'>
-            <h1>Where My Witches At?</h1>
-            <p>Subtitle</p>
-            <Contacts />
+            <Contacts password={this.state.password} username={this.state.username}  />
           </div>
         ) : (
           <div>
-            <h1>Future Password Form</h1>
-            <LoginPage loggedIn={this.state.loggedIn} />
+            <LoginPage loggedIn={this.changeLoggedInStatus.bind(this)} />
           </div>)}
       </div>
     )
