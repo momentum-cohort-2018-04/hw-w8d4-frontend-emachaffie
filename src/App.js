@@ -1,7 +1,7 @@
 /* global localStorage */
 import React, { Component } from 'react'
 import './App.css'
-import request from 'superagent'
+// import request from 'superagent'
 import Contacts from './Contacts'
 import LoginPage from './LoginPage'
 // import contacts from '../db'
@@ -29,7 +29,7 @@ class App extends Component {
       <div>
         {(loggedIn) ? (
           <div className='contactHomePage'>
-            <Contacts password={this.state.password} username={this.state.username}  />
+            <Contacts password={this.state.password} username={this.state.username} />
           </div>
         ) : (
           <div>

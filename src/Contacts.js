@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 // import { request } from 'https'
 import request from 'superagent'
 import './App.css'
+import EditContact from './EditContact'
+import AddContact from './AddContact'
+import DeleteContact from './DeleteContact'
 
 class Contacts extends Component {
   constructor (props) {
@@ -37,6 +40,7 @@ class Contacts extends Component {
       <div className='contactListDisplay'>
         <h1>Accio Contacts</h1>
         <p>Keep Track of Your Magical and Muggle Friends</p>
+        <button className='addContact'>Add Contact</button>
         {this.state.contactList.map((contact, i) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
@@ -46,6 +50,10 @@ class Contacts extends Component {
             <p className='birthday'><span className='textSpan'>Birthday: </span>{contact.birdthday}</p>
             <p className='company'><span className='textSpan'>Organization: </span>{contact.company}</p>
             <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
+            <div>
+              <button className='editButton' onClick={<EditContact />}>Edit</button>
+              <button className='deleteButton' onClick={<DeleteContact currentContact={this.state.contactList.contact} />}>Delete</button>
+            </div>
           </div>
         )
         )}
