@@ -30,6 +30,8 @@ class App extends Component {
 
   changeLoggedInStatus () {
     if (this.state.password && this.state.username) {
+      console.log(this.state.password)
+      console.log(this.state.username)
       this.setState({loggedIn: true})
     }
   }

@@ -17,5 +17,6 @@
     
 //   }
 // }
+// [value]=e.target.value for form !!!!!!!
 
 // export default AddContact

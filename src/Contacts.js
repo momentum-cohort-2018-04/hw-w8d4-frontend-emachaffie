@@ -6,7 +6,6 @@ import request from 'superagent'
 import './App.css'
 import EditContact from './EditContact'
 import AddContact from './AddContact'
-import DeleteContact from './DeleteContact'
 
 class Contacts extends Component {
   constructor (props) {
@@ -21,6 +20,7 @@ class Contacts extends Component {
   componentDidMount () {
     this.getContacts()
   }
+
   getContacts () {
     request
       .get(`http://localhost:8000/contacts/`)
@@ -34,10 +34,11 @@ class Contacts extends Component {
       })
   }
 
-  deleteContact (id) {
-    console.log(id.target.id)
-    console.log(this.props.password)
-    let contactId = id.target.id
+  deleteContact (event) {
+    // console.log(id.target.id)
+    // console.log(this.props.password)
+    let contactId = parseInt(event.target.id)
+    // parseint used above because contactId is string and in filter would compare to numbers
     request
       .delete(`http://localhost:8000/contacts/${contactId}`)
       .auth(this.props.username, this.props.password)

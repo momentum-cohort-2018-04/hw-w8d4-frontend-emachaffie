@@ -1,6 +1,7 @@
 /* global localStorage */
 import App from './App'
 import React, { Component } from 'react'
+import request from 'superagent'
 
 class LoginPage extends Component {
   constructor (props) {
@@ -11,6 +12,7 @@ class LoginPage extends Component {
 
   passwordSubmit (event) {
     localStorage.password = event.target.value
+    console.log(localStorage.password)
   }
 
   usernameSubmit (event) {
@@ -20,9 +22,18 @@ class LoginPage extends Component {
   handleSubmit (event) {
     event.preventDefault()
     console.log('submitted')
-    if (this.props.password !== null && this.props.username !== null) {
-      this.props.loggedIn()
-    }
+    const username = localStorage.username
+    const password = localStorage.password
+    return (
+      request
+        .get(`http://localhost:8000/contacts/`)
+        .auth(username, password)
+        .then((response) => {
+          if (this.props.password !== null && this.props.username !== null) {
+            this.props.loggedIn()
+          }
+        })
+    )
   }
 
   // render with prop onLogin?
