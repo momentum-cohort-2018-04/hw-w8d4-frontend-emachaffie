@@ -32,7 +32,7 @@ class AddContact extends Component {
   }
 
   handleSubmit (event) {
-    const newId = uuid()
+    const newId = parseInt(uuid())
     this.setState({id: newId})
     const body = {
       id: newId,
@@ -64,7 +64,7 @@ class AddContact extends Component {
         Address: <input type='text' name='address' onChange={this.handleChange} />
         Hogwarts House: <select name='house' onChange={this.handleChange} />
           <select name='house' onChange={this.handleChange}>
-            <option value='No House'>No House</option>
+            <option value='None'>No House</option>
             <option value='Gryffindor'>Gryffindor</option>
             <option value='Hufflepuff'>Hufflepuff</option>
             <option value='Ravenclaw'>Ravenclaw</option>

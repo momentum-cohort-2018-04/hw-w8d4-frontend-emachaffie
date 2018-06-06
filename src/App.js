@@ -19,7 +19,7 @@ class App extends Component {
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
     this.notAddingContact = this.notAddingContact.bind(this)
-    this.addingContact = this.addingContact.bind.bind(this)
+    this.addingContactFn = this.addingContactFn.bind(this)
   }
 
   componentDidMount () {
@@ -28,9 +28,10 @@ class App extends Component {
 
   changeLoggedInStatus () {
     this.setState({loggedIn: true})
+    console.log(this.state.loggedIn)
   }
 
-  addingContact () {
+  addingContactFn () {
     this.setState({addingContact: true})
     console.log('addingContact to true')
   }
@@ -41,16 +42,15 @@ class App extends Component {
   }
 
   render () {
-    let loggedIn = this.state.loggedIn
-    if (!loggedIn) {
+    if (!this.state.loggedIn) {
       return (
         <LoginPage changeLoggedInStatus={this.changeLoggedInStatus.bind(this)} />)
-    } else if (this.addingContact) {
+    } else if (this.state.addingContact) {
       return (
-        <AddContact addingContact={this.addingContact.bind(this)} notAddingContact={this.notAddingContact.bind(this)} />)
+        <AddContact notAddingContact={this.notAddingContact.bind(this)} />)
     } else {
       return (
-        <Contacts password={this.state.password} username={this.state.username} addingContact={this.addingContact.bind(this)} />)
+        <Contacts password={this.state.password} username={this.state.username} addingContactFn={this.addingContactFn.bind(this)} />)
     }
   }
 }

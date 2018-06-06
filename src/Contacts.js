@@ -56,7 +56,7 @@ class Contacts extends Component {
       <div className='contactListDisplay'>
         <h1>Accio Contacts</h1>
         <p>Keep Track of Your Magical and Muggle Friends</p>
-        <button className='addContact' onClick={this.props.addingContact}
+        <button className='addContact' onClick={this.props.addingContactFn}
         >Add Contact</button>
         {this.state.contactList.map((contact, i) => (
           <div key={contact.id} className='contactDiv'>
