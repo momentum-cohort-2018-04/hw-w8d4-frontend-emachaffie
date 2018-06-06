@@ -29,14 +29,10 @@ class LoginPage extends Component {
         .get(`http://localhost:8000/contacts/`)
         .auth(username, password)
         .then((response) => {
-          if (this.props.password !== null && this.props.username !== null) {
-            this.props.loggedIn()
-          }
+          this.props.changeLoggedInStatus()
         })
     )
   }
-
-  // render with prop onLogin?
 
   render () {
     return (

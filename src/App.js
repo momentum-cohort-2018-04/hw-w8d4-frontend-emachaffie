@@ -4,7 +4,8 @@ import './App.css'
 // import request from 'superagent'
 import Contacts from './Contacts'
 import LoginPage from './LoginPage'
-// import contacts from '../db'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AddContact from './AddContact'
 
 class App extends Component {
   constructor (props) {
@@ -12,44 +13,45 @@ class App extends Component {
     this.state = {
       password: localStorage.password,
       username: localStorage.username,
-      loggedIn: false
+      loggedIn: false,
+      addingContact: false
       // Could set state to show particular piece based on what was clicked, would need a conditional statement below
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
+    this.notAddingContact = this.notAddingContact.bind(this)
+    this.addingContact = this.addingContact.bind.bind(this)
   }
 
-  // Component did mount, get request user and password from state, 
-  // check it's authorized/valid
-  // If valid, set logged in to true
-  // if not valid, show login screen
-
-  // render
-  // if loading show spinner
-  // if logged in show Contacts
-  // else show LoginPage
+  componentDidMount () {
+    this.changeLoggedInStatus()
+  }
 
   changeLoggedInStatus () {
-    if (this.state.password && this.state.username) {
-      console.log(this.state.password)
-      console.log(this.state.username)
-      this.setState({loggedIn: true})
-    }
+    this.setState({loggedIn: true})
+  }
+
+  addingContact () {
+    this.setState({addingContact: true})
+    console.log('addingContact to true')
+  }
+
+  notAddingContact () {
+    this.setState({addingContact: false})
+    console.log('addingContact to false')
   }
 
   render () {
     let loggedIn = this.state.loggedIn
-    return (
-      <div>
-        {(loggedIn) ? (
-          <div className='contactHomePage'>
-            <Contacts password={this.state.password} username={this.state.username} />
-          </div>
-        ) : (
-          <div>
-            <LoginPage loggedIn={this.changeLoggedInStatus.bind(this)} />
-          </div>)}
-      </div>
-    )
+    if (!loggedIn) {
+      return (
+        <LoginPage changeLoggedInStatus={this.changeLoggedInStatus.bind(this)} />)
+    } else if (this.addingContact) {
+      return (
+        <AddContact addingContact={this.addingContact.bind(this)} notAddingContact={this.notAddingContact.bind(this)} />)
+    } else {
+      return (
+        <Contacts password={this.state.password} username={this.state.username} addingContact={this.addingContact.bind(this)} />)
+    }
   }
 }
 

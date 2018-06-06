@@ -3,16 +3,17 @@ import App from './App'
 import React, { Component } from 'react'
 import request from 'superagent'
 import './App.css'
-import Contacts from './Contacts'
+import uuid from 'uuid/v4'
 
 class AddContact extends Component {
   constructor (props) {
     super()
     this.state = {
+      id: '',
       name: '',
       email: '',
       address: '',
-      house: '',
+      house: null,
       birthday: null,
       company: '',
       title: ''
@@ -23,44 +24,55 @@ class AddContact extends Component {
   }
 
   handleChange (event) {
-    let value = event.target.value
+    const name = event.target.name
+    const value = event.target.value
     console.log(value)
-    // this.setState.value({value: value})
-    // See kb link on line 12 https://github.com/momentum-cohort-2018-04/kb/blob/master/w7--frontend/examples/alarm-clock/src/components/AddAlarmForm.js
+    console.log(name)
+    this.setState({[name]: value})
   }
 
   handleSubmit (event) {
+    const newId = uuid()
+    this.setState({id: newId})
+    const body = {
+      id: newId,
+      name: this.state.name,
+      email: this.state.email,
+      address: this.state.address,
+      house: this.state.house,
+      birthday: this.state.birthday,
+      company: this.state.company,
+      title: this.state.title}
+    console.log(body)
     event.preventDefault()
     request
       .post(`http://localhost:8000/contacts/`)
       .auth(localStorage.username, localStorage.password)
-      .send(// You left off here!// 
-      )
-      .then(response => {  
-      })
+      .send(body)
+      .end()
+    this.props.notAddingContact()
   }
 
   render () {
     return (
       <div>
-        {/* Get in random id thing */}
+        <h2>Add a Contact</h2>
+        <p>You may add with the spell 'addendum contacto'. Muggles and those who have not passed Year 3 Incantations, please fill out this form.</p>
         <form type='submit' onSubmit={this.handleSubmit}>
-        Name: <input type='text' value='name' onChange={this.handleChange} />
-        Email: <input type='text' value='email' onChange={this.handleChange} />
-        // Make email an email
-        Address: <input type='text' value='address' onChange={this.handleChange} />
-        Hogwarts House: <select value={this.state.house} onChange={this.handleChange} />
-          <select value={this.state.house} onChange={this.handleChange}>
+        Name: <input type='text' name='name' onChange={this.handleChange} />
+        Email: <input type='text' name='email' onChange={this.handleChange} />
+        Address: <input type='text' name='address' onChange={this.handleChange} />
+        Hogwarts House: <select name='house' onChange={this.handleChange} />
+          <select name='house' onChange={this.handleChange}>
             <option value='No House'>No House</option>
             <option value='Gryffindor'>Gryffindor</option>
             <option value='Hufflepuff'>Hufflepuff</option>
             <option value='Ravenclaw'>Ravenclaw</option>
             <option value='Slytherin'>Slytherin</option>
           </select>
-        Birthday: <input type='text' value='birthday' onChange={this.handleChange} />
-        // Make birthday a date selection
-        Organization: <input type='text' value='company' onChange={this.handleChange} />
-        Job Title: <input type='text' value='title' onChange={this.handleChange} />
+        Birthday: <input type='text' name='birthday' onChange={this.handleChange} />
+        Organization: <input type='text' name='company' onChange={this.handleChange} />
+        Job Title: <input type='text' name='title' onChange={this.handleChange} />
           <button type='submit'>Submit</button>
         </form>
       </div>

@@ -7,6 +7,11 @@ body {
   font-family: 'EB Garamond', serif;
 }
 
+h1 {
+  font-family: 'Niconne', cursive;
+  font-size: 2rem;
+}
+
 /* Login Form */
 
 .loginForm {
@@ -46,6 +51,8 @@ body {
 
 .name {
   font-weight: 700;
+  font-family: 'Niconne', cursive;
+  font-size: 1.5rem;
 }
 
 .textSpan {

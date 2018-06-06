@@ -4,8 +4,6 @@ import React, { Component } from 'react'
 // import { request } from 'https'
 import request from 'superagent'
 import './App.css'
-import EditContact from './EditContact'
-import AddContact from './AddContact'
 
 class Contacts extends Component {
   constructor (props) {
@@ -48,33 +46,32 @@ class Contacts extends Component {
       })
   }
 
-  addContactFn (event) {
-    event.preventDefault()
-    new AddContact
-  }
+  // addContactFn (event) {
+  //   event.preventDefault()
+  //   new AddContact contactList={this.state.contactList}
+  // }
 
   render () {
     return (
       <div className='contactListDisplay'>
         <h1>Accio Contacts</h1>
         <p>Keep Track of Your Magical and Muggle Friends</p>
-        <button className='addContact' onClick={this.addContactFn}
+        <button className='addContact' onClick={this.props.addingContact}
         >Add Contact</button>
         {this.state.contactList.map((contact, i) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
             <p className='email'><span className='textSpan'>Email: </span>{contact.email}</p>
             <p className='address'><span className='textSpan'>Address: </span>{contact.address}</p>
-            <p className='house'><span className='textSpan'>Hogwarts House: </span>{contact.email}</p>
-            <p className='birthday'><span className='textSpan'>Birthday: </span>{contact.birdthday}</p>
+            <p className='house'><span className='textSpan'>Hogwarts House: </span>{contact.house}</p>
+            <p className='birthday'><span className='textSpan'>Birthday: </span>{contact.birthday}</p>
             <p className='company'><span className='textSpan'>Organization: </span>{contact.company}</p>
             <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
             <div>
-              <button className='editButton' //onClick={<EditContact {contactList=this.state.contactList} />}//
+              <button className='editButton' // onClick={<EditContact {contactList=this.state.contactList} />}//
               >Edit</button>
               <button className='deleteButton' id={contact.id} onClick={this.deleteContact}
               >Delete</button>
-              {console.log(contact.id)}
             </div>
           </div>
         )
