@@ -24,7 +24,7 @@ class Contacts extends Component {
   getContacts () {
     request
       .get(`http://localhost:8000/contacts/`)
-      .auth(this.props.username, this.props.password)
+      .auth(localStorage.username, localStorage.password)
       .then(response => {
         let contactListArray = response.body
         console.log(contactListArray)
@@ -35,8 +35,6 @@ class Contacts extends Component {
   }
 
   deleteContact (event) {
-    // console.log(id.target.id)
-    // console.log(this.props.password)
     let contactId = parseInt(event.target.id)
     // parseint used above because contactId is string and in filter would compare to numbers
     request
@@ -50,13 +48,17 @@ class Contacts extends Component {
       })
   }
 
+  addContactFn (event) {
+    event.preventDefault()
+    new AddContact
+  }
+
   render () {
-    // console.log(this.props.username)
     return (
       <div className='contactListDisplay'>
         <h1>Accio Contacts</h1>
         <p>Keep Track of Your Magical and Muggle Friends</p>
-        <button className='addContact' // onClick={<AddContact />}//
+        <button className='addContact' onClick={this.addContactFn}
         >Add Contact</button>
         {this.state.contactList.map((contact, i) => (
           <div key={contact.id} className='contactDiv'>

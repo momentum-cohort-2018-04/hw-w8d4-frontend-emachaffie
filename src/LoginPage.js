@@ -40,12 +40,12 @@ class LoginPage extends Component {
 
   render () {
     return (
-      <div className='loginForm'>
-        <h2>Accio Contacts Log In</h2>
-        <form onSubmit={this.handleSubmit}>
-          Username: <input type='text' name='username' onChange={this.usernameSubmit} />
-          Password: <input type='text' name='password' onChange={this.passwordSubmit} />
-          <button type='submit'>Submit</button>
+      <div className='loginFormDiv'>
+        <h2 className='loginHeader'>Accio Contacts</h2>
+        <form className='loginForm' onSubmit={this.handleSubmit}>
+          Username: <input type='text' name='username' className='loginFormInput' onChange={this.usernameSubmit} />
+          Password: <input type='text' name='password' className='loginFormInput' onChange={this.passwordSubmit} />
+          <button className='loginFormButton' type='submit'>Submit</button>
         </form>
       </div>
     )
