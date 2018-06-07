@@ -55,7 +55,7 @@ class Contacts extends Component {
     return (
       <div className='contactListDisplay'>
         <h1 className='header'>Accio Contacts</h1>
-        <p>Keep Track of Your Magical and Muggle Friends</p>
+        <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
         <button className='addContactButton' onClick={this.props.addingContactFn}
         >Add Contact</button>
         {this.state.contactList.map((contact, i) => (

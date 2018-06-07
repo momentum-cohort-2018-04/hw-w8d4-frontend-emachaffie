@@ -32,7 +32,12 @@ h2 {
   background-color: #663867;
   padding: 20px 40px;
   width: 100%;
-  margin: 0 -50px;
+  margin: auto;
+}
+
+.contactSubheaderText {
+  text-align: center;
+  /* font-weight: 600; */
 }
 
 .loginFormInput {
@@ -60,13 +65,14 @@ h2 {
 }
 
 .name {
-  font-weight: 700;
+  font-weight: 500;
   font-family: 'Niconne', cursive;
   font-size: 1.5rem;
-  background-color: #A49DBF;
-  margin: 0 -40px;
+  background-color:black;
+  margin: 0 -20px 0 0;
   padding: 5px 80px 5px 40px;
   width: 100%;
+  color: white;
 }
 
 .textSpan {
@@ -98,4 +104,22 @@ h2 {
 .deleteButton, .cancelButton {
   color: #FFF;
   background-color: #A49DBF;
+}
+
+.addContactButton {
+  background-color: #A49DBF;
+  color: black;
+}
+
+.editButton, .deleteButton, .addContactButton {
+  margin-bottom: 40px;
+}
+
+.editButton, .deleteButton {
+  margin-right: 10px;
+
+}
+
+.deleteButton {
+  color: black;
 }
