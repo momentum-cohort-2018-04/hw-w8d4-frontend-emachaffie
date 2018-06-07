@@ -12,6 +12,11 @@ h1 {
   font-size: 2rem;
 }
 
+h2 {
+  font-family: 'Niconne', cursive;
+  font-size: 1.8rem;
+}
+
 /* Login Form */
 
 .loginForm {
@@ -20,9 +25,14 @@ h1 {
   align-items: flex-start;
 }
 
-.loginHeader {
+.header {
   font-family: 'Niconne', cursive;
   font-size: 2rem;
+  color: #FFF;
+  background-color: #663867;
+  padding: 20px 40px;
+  width: 100%;
+  margin: 0 -50px;
 }
 
 .loginFormInput {
@@ -53,9 +63,39 @@ h1 {
   font-weight: 700;
   font-family: 'Niconne', cursive;
   font-size: 1.5rem;
+  background-color: #A49DBF;
+  margin: 0 -40px;
+  padding: 5px 80px 5px 40px;
+  width: 100%;
 }
 
 .textSpan {
   font-weight: 700;
   font-size: 1rem;
+}
+
+/* Add Contact Form */
+
+.addContactForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-weight: 600;
+  /* align-items: flex-start; */
+}
+
+.submitButton, .editButton, .addContactButton, .deleteButton, .cancelButton {
+  margin: 10px 0 0 0;
+  font-family: 'Niconne', cursive;
+  font-size: 1.2rem;
+  width: 35%;
+  /* flex-basis: 50%; */
+  align-self: center;
+  color: #FFF;
+  background-color: #774178;
+}
+
+.deleteButton, .cancelButton {
+  color: #FFF;
+  background-color: #A49DBF;
 }

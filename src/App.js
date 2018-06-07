@@ -4,7 +4,7 @@ import './App.css'
 // import request from 'superagent'
 import Contacts from './Contacts'
 import LoginPage from './LoginPage'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+// import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
 
 class App extends Component {

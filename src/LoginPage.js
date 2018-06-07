@@ -1,7 +1,7 @@
 /* global localStorage */
-import App from './App'
 import React, { Component } from 'react'
 import request from 'superagent'
+import './App.css'
 
 class LoginPage extends Component {
   constructor (props) {
@@ -37,7 +37,9 @@ class LoginPage extends Component {
   render () {
     return (
       <div className='loginFormDiv'>
-        <h2 className='loginHeader'>Accio Contacts</h2>
+        <header className='header'>
+          <h2 className='header'>Accio Contacts</h2>
+        </header>
         <form className='loginForm' onSubmit={this.handleSubmit}>
           Username: <input type='text' name='username' className='loginFormInput' onChange={this.usernameSubmit} />
           Password: <input type='text' name='password' className='loginFormInput' onChange={this.passwordSubmit} />
