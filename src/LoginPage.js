@@ -26,10 +26,15 @@ class LoginPage extends Component {
     const password = localStorage.password
     return (
       request
-        .get(`http://localhost:8000/contacts/`)
+        .head(`http://localhost:8000/contacts/`)
         .auth(username, password)
         .then((response) => {
-          this.props.changeLoggedInStatus()
+          if (response.status === 200) {
+            console.log(response.status)
+            this.props.changeLoggedInStatus(true)
+          } else {
+            this.props.changeLoggedInStatus(false)
+          }
         })
     )
   }

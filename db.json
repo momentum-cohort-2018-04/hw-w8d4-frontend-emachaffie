@@ -1,7 +1,7 @@
 {
   "contacts": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Harry Potter",
       "email": "hpotter@hogwarts.magic",
       "address": "4 Privet Drive, Little Whinging, Surrey",
@@ -11,7 +11,7 @@
       "title": "Auror"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Hermione Granger",
       "email": "hgranger@hogwarts.magic",
       "address": "Heathgate, Hampstead",
@@ -21,7 +21,7 @@
       "title": "Minister for Magic"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Luna Lovegood",
       "email": "llovegood@hogwarts.magic",
       "address": "102 Pandora Drive, Ottery St Catchpole",
@@ -31,7 +31,7 @@
       "title": "Magizoologist"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Ron Weasley",
       "email": "rweasley@hogwarts.magic",
       "address": "The Burrow, Ottery St Catchpole",
@@ -41,7 +41,7 @@
       "title": "Co-Manager"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Severus Snape",
       "email": "ssnape@hogwarts.magic",
       "address": "Hogwarts School of Witchcraft and Wizardry, House Slytherin, Master Chamber",

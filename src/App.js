@@ -15,7 +15,6 @@ class App extends Component {
       username: localStorage.username,
       loggedIn: false,
       addingContact: false
-      // Could set state to show particular piece based on what was clicked, would need a conditional statement below
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
     this.notAddingContact = this.notAddingContact.bind(this)
@@ -23,11 +22,15 @@ class App extends Component {
   }
 
   componentDidMount () {
-    this.changeLoggedInStatus()
+    if (this.state.username) {
+      this.changeLoggedInStatus(true)
+    } else {
+      this.changedLoggedInStatus(false)
+    }
   }
 
-  changeLoggedInStatus () {
-    this.setState({loggedIn: true})
+  changeLoggedInStatus (boo) {
+    this.setState({loggedIn: boo})
     console.log(this.state.loggedIn)
   }
 

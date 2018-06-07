@@ -33,7 +33,7 @@ class Contacts extends Component {
   }
 
   deleteContact (event) {
-    let contactId = parseInt(event.target.id)
+    let contactId = event.target.id
     // parseint used above because contactId is string and in filter would compare to numbers
     request
       .delete(`http://localhost:8000/contacts/${contactId}`)

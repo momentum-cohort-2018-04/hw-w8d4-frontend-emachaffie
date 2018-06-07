@@ -62,7 +62,7 @@ class EditContact extends Component {
         Name: <input type='text' name='name' onChange={this.handleChange} value={this.props.name} />
         Email: <input type='text' name='email' onChange={this.handleChange} value={this.props.email} />
         Address: <input type='text' name='address' onChange={this.handleChange} value={this.props.address} />
-        Hogwarts House: <select name='house' onChange={this.handleChange} value={this.props.house}/>
+        Hogwarts House: <select name='house' onChange={this.handleChange} value={this.props.house} />
           <select name='house' onChange={this.handleChange}>
             <option value='No House'>No House</option>
             <option value='Gryffindor'>Gryffindor</option>

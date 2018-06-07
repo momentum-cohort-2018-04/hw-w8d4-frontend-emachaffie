@@ -32,7 +32,7 @@ class AddContact extends Component {
   }
 
   handleSubmit (event) {
-    const newId = parseInt(uuid())
+    const newId = uuid()
     this.setState({id: newId})
     const body = {
       id: newId,
