@@ -6,6 +6,7 @@ import Contacts from './Contacts'
 import LoginPage from './LoginPage'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
+import firebase from './firebase'
 
 class App extends Component {
   constructor (props) {
@@ -25,7 +26,7 @@ class App extends Component {
     if (this.state.username) {
       this.changeLoggedInStatus(true)
     } else {
-      this.changedLoggedInStatus(false)
+      this.changeLoggedInStatus(false)
     }
   }
 

@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 // import { request } from 'https'
 import request from 'superagent'
 import './App.css'
+import firebase from './firebase'
 
 class Contacts extends Component {
   constructor (props) {

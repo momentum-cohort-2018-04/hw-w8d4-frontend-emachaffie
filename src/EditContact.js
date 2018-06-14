@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import './App.css'
 import uuid from 'uuid/v4'
+import firebase from './firebase'
 
 class EditContact extends Component {
   constructor (props) {

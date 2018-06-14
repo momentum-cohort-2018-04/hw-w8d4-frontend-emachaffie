@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 import './App.css'
+import firebase from './firebase'
 
 class LoginPage extends Component {
   constructor (props) {
@@ -47,7 +48,7 @@ class LoginPage extends Component {
         </header>
         <form className='loginForm' onSubmit={this.handleSubmit}>
           Username: <input type='text' name='username' className='loginFormInput' onChange={this.usernameSubmit} />
-          Password: <input type='text' name='password' className='loginFormInput' onChange={this.passwordSubmit} />
+          Password: <input type='password' name='password' className='loginFormInput' onChange={this.passwordSubmit} />
           <button className='loginFormButton' type='submit'>Submit</button>
         </form>
       </div>
