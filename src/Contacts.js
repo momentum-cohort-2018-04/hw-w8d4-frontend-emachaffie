@@ -4,34 +4,71 @@ import React, { Component } from 'react'
 // import { request } from 'https'
 import request from 'superagent'
 import './App.css'
-import firebase from './firebase'
+import firebase from './firebase.js'
+
+let database = firebase.database()
 
 class Contacts extends Component {
   constructor (props) {
     super()
     this.state = {
-      contactList: []
+      contacts: []
     }
-    this.getContacts = this.getContacts.bind(this)
+    // this.getContacts = this.getContacts.bind(this)
     this.deleteContact = this.deleteContact.bind(this)
   }
 
   componentDidMount () {
-    this.getContacts()
+    console.log('loading contacts')
+    const contactsList = database.ref('contacts')
+    contactsList.on('value', (snapshot) => {
+      let contacts = snapshot.val()
+      let newState = []
+      for (let contact in contacts) {
+        newState.push({
+          id: contact,
+          name: contacts[contact].name,
+          email: contacts[contact].email,
+          address: contacts[contact].address,
+          house: contacts[contact].house,
+          birthday: contacts[contact].birthday,
+          company: contacts[contact].company,
+          title: contacts[contact].title
+        })
+      }
+      this.setState({
+        contacts: newState
+      })
+    })
   }
 
-  getContacts () {
-    request
-      .get(`http://localhost:8000/contacts/`)
-      .auth(localStorage.username, localStorage.password)
-      .then(response => {
-        let contactListArray = response.body
-        console.log(contactListArray)
-        this.setState({contactList: contactListArray})
-        console.log(this.state.contactList)
-        console.log(this.props.password)
-      })
-  }
+  // const itemsRef = firebase.database().ref('items');
+  // itemsRef.on('value', (snapshot) => {
+  //   let items = snapshot.val();
+  //   let newState = [];
+  //   for (let item in items) {
+  //     newState.push({
+  //       id: item,
+  //       title: items[item].title,
+  //       user: items[item].user
+  //     });
+  //   }
+  //   this.setState({
+  //     items: newState
+  //   });
+  // });
+// getContacts () {
+  //   request
+  //     .get(`http://localhost:8000/contacts/`)
+  //     .auth(localStorage.username, localStorage.password)
+  //     .then(response => {
+  //       let contactListArray = response.body
+  //       console.log(contactListArray)
+  //       this.setState({contactList: contactListArray})
+  //       console.log(this.state.contactList)
+  //       console.log(this.props.password)
+  //     })
+  // }
 
   deleteContact (event) {
     let contactId = event.target.id
@@ -59,7 +96,7 @@ class Contacts extends Component {
         <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
         <button className='addContactButton' onClick={this.props.addingContactFn}
         >Add Contact</button>
-        {this.state.contactList.map((contact, i) => (
+        {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
             <p className='email'><span className='textSpan'>Email: </span>{contact.email}</p>
