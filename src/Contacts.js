@@ -42,51 +42,23 @@ class Contacts extends Component {
     })
   }
 
-  // const itemsRef = firebase.database().ref('items');
-  // itemsRef.on('value', (snapshot) => {
-  //   let items = snapshot.val();
-  //   let newState = [];
-  //   for (let item in items) {
-  //     newState.push({
-  //       id: item,
-  //       title: items[item].title,
-  //       user: items[item].user
-  //     });
-  //   }
-  //   this.setState({
-  //     items: newState
-  //   });
-  // });
-// getContacts () {
-  //   request
-  //     .get(`http://localhost:8000/contacts/`)
-  //     .auth(localStorage.username, localStorage.password)
-  //     .then(response => {
-  //       let contactListArray = response.body
-  //       console.log(contactListArray)
-  //       this.setState({contactList: contactListArray})
-  //       console.log(this.state.contactList)
-  //       console.log(this.props.password)
-  //     })
-  // }
-
-  deleteContact (event) {
-    let contactId = event.target.id
-    // parseint used above because contactId is string and in filter would compare to numbers
-    request
-      .delete(`http://localhost:8000/contacts/${contactId}`)
-      .auth(this.props.username, this.props.password)
-      .then(response => {
-        console.log('deleted')
-        this.setState(prevState => ({
-          contactList: prevState.contactList.filter(contact => contact.id !== contactId)})
-        )
-      })
+  deleteContact (contactId) {
+    const contactToRemove = database.ref(`/contacts/${contactId}`)
+    contactToRemove.remove()
   }
 
-  // addContactFn (event) {
-  //   event.preventDefault()
-  //   new AddContact contactList={this.state.contactList}
+  // deleteContact (event) {
+  //   let contactId = event.target.id
+  //   // parseint used above because contactId is string and in filter would compare to numbers
+  //   request
+  //     .delete(`http://localhost:8000/contacts/${contactId}`)
+  //     .auth(this.props.username, this.props.password)
+  //     .then(response => {
+  //       console.log('deleted')
+  //       this.setState(prevState => ({
+  //         contactList: prevState.contactList.filter(contact => contact.id !== contactId)})
+  //       )
+  //     })
   // }
 
   render () {
@@ -108,7 +80,7 @@ class Contacts extends Component {
             <div>
               <button className='editButton' // onClick={<EditContact {contactList=this.state.contactList} />}//
               >Edit</button>
-              <button className='deleteButton' id={contact.id} onClick={this.deleteContact}
+              <button className='deleteButton' id={contact.id} onClick={() => this.deleteContact(contact.id)}
               >Delete</button>
             </div>
           </div>
