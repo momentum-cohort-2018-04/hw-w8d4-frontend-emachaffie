@@ -1,6 +1,6 @@
-import firebase from './firebase'
+import firebase from 'firebase'
 
-var config = {
+let config = {
   apiKey: 'AIzaSyCK2dJ8U6566F5pNCDJBQvokNA7efRhS0Q',
   authDomain: 'accio-contacts.firebaseapp.com',
   databaseURL: 'https://accio-contacts.firebaseio.com',
@@ -8,3 +8,7 @@ var config = {
   storageBucket: 'accio-contacts.appspot.com',
   messagingSenderId: '194780843503'
 }
+
+firebase.initializeApp(config)
+
+export default firebase

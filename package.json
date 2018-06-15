@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^5.0.4",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.3.1",
@@ -17,7 +18,8 @@
     "eject": "react-scripts eject",
     "start-api": "json-server db.json",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy": "yarn build && firebase deploy"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",

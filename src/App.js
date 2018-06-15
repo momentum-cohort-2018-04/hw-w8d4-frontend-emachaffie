@@ -10,11 +10,12 @@ import firebase from './firebase'
 
 class App extends Component {
   constructor (props) {
+    let database = firebase.database()
     super()
     this.state = {
       password: localStorage.password,
       username: localStorage.username,
-      loggedIn: false,
+      loggedIn: true,
       addingContact: false
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)

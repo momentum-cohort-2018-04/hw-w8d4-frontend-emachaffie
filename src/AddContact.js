@@ -1,14 +1,16 @@
 /* global localStorage */
 import App from './App'
 import React, { Component } from 'react'
-import request from 'superagent'
+// import request from 'superagent'
 import './App.css'
 import uuid from 'uuid/v4'
-import firebase from './firebase'
+import firebase from './firebase.js'
+
+let database = firebase.database()
 
 class AddContact extends Component {
   constructor (props) {
-    super()
+    super(props)
     this.state = {
       id: '',
       name: '',
@@ -19,7 +21,6 @@ class AddContact extends Component {
       company: '',
       title: ''
     }
-
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -32,10 +33,34 @@ class AddContact extends Component {
     this.setState({[name]: value})
   }
 
+  // handleSubmit (event) {
+  //   const newId = uuid()
+  //   this.setState({id: newId})
+  //   const body = {
+  //     id: newId,
+  //     name: this.state.name,
+  //     email: this.state.email,
+  //     address: this.state.address,
+  //     house: this.state.house,
+  //     birthday: this.state.birthday,
+  //     company: this.state.company,
+  //     title: this.state.title}
+  //   console.log(body)
+  //   event.preventDefault()
+  //   request
+  //     .post(`http://localhost:8000/contacts/`)
+  //     .auth(localStorage.username, localStorage.password)
+  //     .send(body)
+  //     .end()
+  //   this.props.notAddingContact()
+  // }
+
   handleSubmit (event) {
+    event.preventDefault()
+    console.log('submitting')
     const newId = uuid()
-    this.setState({id: newId})
-    const body = {
+    const newContactList = database.ref('contacts/')
+    const newContact = {
       id: newId,
       name: this.state.name,
       email: this.state.email,
@@ -43,16 +68,20 @@ class AddContact extends Component {
       house: this.state.house,
       birthday: this.state.birthday,
       company: this.state.company,
-      title: this.state.title}
-    console.log(body)
-    event.preventDefault()
-    request
-      .post(`http://localhost:8000/contacts/`)
-      .auth(localStorage.username, localStorage.password)
-      .send(body)
-      .end()
+      title: this.state.title
+    }
+    newContactList.push(newContact)
     this.props.notAddingContact()
   }
+
+  // Example from site 
+  // function writeUserData(userId, name, email, imageUrl) {
+  //   firebase.database().ref('users/' + userId).set({
+  //     username: name,
+  //     email: email,
+  //     profile_picture : imageUrl
+  //   });
+  // }
 
   render () {
     return (
