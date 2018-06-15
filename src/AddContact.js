@@ -33,28 +33,6 @@ class AddContact extends Component {
     this.setState({[name]: value})
   }
 
-  // handleSubmit (event) {
-  //   const newId = uuid()
-  //   this.setState({id: newId})
-  //   const body = {
-  //     id: newId,
-  //     name: this.state.name,
-  //     email: this.state.email,
-  //     address: this.state.address,
-  //     house: this.state.house,
-  //     birthday: this.state.birthday,
-  //     company: this.state.company,
-  //     title: this.state.title}
-  //   console.log(body)
-  //   event.preventDefault()
-  //   request
-  //     .post(`http://localhost:8000/contacts/`)
-  //     .auth(localStorage.username, localStorage.password)
-  //     .send(body)
-  //     .end()
-  //   this.props.notAddingContact()
-  // }
-
   handleSubmit (event) {
     event.preventDefault()
     console.log('submitting')

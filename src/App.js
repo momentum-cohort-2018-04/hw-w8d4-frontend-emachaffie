@@ -7,6 +7,7 @@ import LoginPage from './LoginPage'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
 import firebase from './firebase'
+import { BrowserRouter as Router, Route, Link, NavLink} from 'react-router-dom'
 
 class App extends Component {
   constructor (props) {
@@ -47,6 +48,14 @@ class App extends Component {
   }
 
   render () {
+    <Router>
+    <div>
+      <Route exact path = '/' {App} />
+      <Route exact path = '/contacts' {Contacts} />
+      <Route exact path = '/add' {AddContacts} />
+      <Route exact path = '/edit/:id' {EditContact} />
+      </div>
+     </Router>
     if (!this.state.loggedIn) {
       return (
         <LoginPage changeLoggedInStatus={this.changeLoggedInStatus.bind(this)} />)

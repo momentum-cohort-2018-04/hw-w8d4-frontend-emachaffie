@@ -81,4 +81,4 @@ class EditContact extends Component {
   }
 }
 
-export default AddContact
+export default EditContact

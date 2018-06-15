@@ -10,6 +10,7 @@ body {
 h1 {
   font-family: 'Niconne', cursive;
   font-size: 2rem;
+  font-weight: 400;
 }
 
 h2 {
@@ -61,18 +62,29 @@ h2 {
 }
 
 .contactDiv {
-  margin: 15px 20px;
+  margin: 15px 0px;
+  background-image: url("images/PaperOld.jpg");
+  padding: 10px 15px 0 15px;
+  box-shadow: 1px 2px 5px;
+}
+
+.contactInfoDiv {
+  margin: 0 40px;
+}
+
+.contactButtonDiv {
+  
 }
 
 .name {
   font-weight: 500;
   font-family: 'Niconne', cursive;
-  font-size: 1.5rem;
-  background-color:black;
-  margin: 0 -20px 0 0;
+  font-size: 1.8rem;
+  /* background-color:black; */
+  margin: 0 -20px 0 -20px;
   padding: 5px 80px 5px 40px;
   width: 100%;
-  color: white;
+  color: black;
 }
 
 .textSpan {

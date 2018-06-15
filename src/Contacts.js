@@ -71,13 +71,15 @@ class Contacts extends Component {
         {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
-            <p className='email'><span className='textSpan'>Email: </span>{contact.email}</p>
-            <p className='address'><span className='textSpan'>Address: </span>{contact.address}</p>
-            <p className='house'><span className='textSpan'>Hogwarts House: </span>{contact.house}</p>
-            <p className='birthday'><span className='textSpan'>Birthday: </span>{contact.birthday}</p>
-            <p className='company'><span className='textSpan'>Organization: </span>{contact.company}</p>
-            <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
-            <div>
+            <div className='contactInfoDiv'>
+              <p className='email'><span className='textSpan'>Email: </span>{contact.email}</p>
+              <p className='address'><span className='textSpan'>Address: </span>{contact.address}</p>
+              <p className='house'><span className='textSpan'>Hogwarts House: </span>{contact.house}</p>
+              <p className='birthday'><span className='textSpan'>Birthday: </span>{contact.birthday}</p>
+              <p className='company'><span className='textSpan'>Organization: </span>{contact.company}</p>
+              <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
+            </div>
+            <div className='contactButtonDiv'>
               <button className='editButton' // onClick={<EditContact {contactList=this.state.contactList} />}//
               >Edit</button>
               <button className='deleteButton' id={contact.id} onClick={() => this.deleteContact(contact.id)}
