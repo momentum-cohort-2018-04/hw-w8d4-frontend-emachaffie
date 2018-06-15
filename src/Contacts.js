@@ -1,5 +1,5 @@
 /* global localStorage */
-import App from './App'
+import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 // import { request } from 'https'
 import request from 'superagent'
@@ -46,20 +46,6 @@ class Contacts extends Component {
     const contactToRemove = database.ref(`/contacts/${contactId}`)
     contactToRemove.remove()
   }
-
-  // deleteContact (event) {
-  //   let contactId = event.target.id
-  //   // parseint used above because contactId is string and in filter would compare to numbers
-  //   request
-  //     .delete(`http://localhost:8000/contacts/${contactId}`)
-  //     .auth(this.props.username, this.props.password)
-  //     .then(response => {
-  //       console.log('deleted')
-  //       this.setState(prevState => ({
-  //         contactList: prevState.contactList.filter(contact => contact.id !== contactId)})
-  //       )
-  //     })
-  // }
 
   render () {
     return (

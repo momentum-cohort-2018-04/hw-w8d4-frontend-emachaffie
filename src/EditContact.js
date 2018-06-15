@@ -1,5 +1,5 @@
 /* global localStorage */
-import App from './App'
+import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 import request from 'superagent'
 import './App.css'
@@ -32,27 +32,27 @@ class EditContact extends Component {
     this.setState({[name]: value})
   }
 
-  handleSubmit (event) {
-    // const newId = parseInt(uuid())
-    // this.setState({id: newId})
-    const body = {
-      id: this.state.id,
-      name: this.state.name,
-      email: this.state.email,
-      address: this.state.address,
-      house: this.state.house,
-      birthday: this.state.birthday,
-      company: this.state.company,
-      title: this.state.title}
-    console.log(body)
-    event.preventDefault()
-    request
-      .put(`http://localhost:8000/contacts/${id}`)
-      .auth(localStorage.username, localStorage.password)
-      .send(body)
-      .end()
-    this.props.notAddingContact()
-  }
+  // handleSubmit (event) {
+  //   // const newId = parseInt(uuid())
+  //   // this.setState({id: newId})
+  //   const body = {
+  //     id: this.state.id,
+  //     name: this.state.name,
+  //     email: this.state.email,
+  //     address: this.state.address,
+  //     house: this.state.house,
+  //     birthday: this.state.birthday,
+  //     company: this.state.company,
+  //     title: this.state.title}
+  //   console.log(body)
+  //   event.preventDefault()
+  //   request
+  //     .put(`http://localhost:8000/contacts/${id}`)
+  //     .auth(localStorage.username, localStorage.password)
+  //     .send(body)
+  //     .end()
+  //   this.props.notAddingContact()
+  // }
 
   render () {
     return (

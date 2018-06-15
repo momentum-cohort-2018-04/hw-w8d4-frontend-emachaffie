@@ -1,5 +1,5 @@
 /* global localStorage */
-import App from './App'
+import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 // import request from 'superagent'
 import './App.css'
