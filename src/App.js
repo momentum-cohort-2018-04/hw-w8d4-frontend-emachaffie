@@ -7,7 +7,7 @@ import LoginPage from './LoginPage'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
 import firebase from './firebase'
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import EditContact from './EditContact'
 
@@ -28,13 +28,13 @@ class App extends Component {
   render () {
     return (
       <Router>
-        <div>
+        <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route exact path='/contacts' component={Contacts} />
           <Route exact path='/add' component={AddContact} />
           <Route exact path='/edit/:id' component={EditContact} />
           <Route exact path='/login' component={LoginPage} />
-        </div>
+        </Switch>
       </Router>
     )
   }

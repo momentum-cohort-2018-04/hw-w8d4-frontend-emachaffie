@@ -1,10 +1,10 @@
 /* global localStorage */
-import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 // import request from 'superagent'
 import './App.css'
 import uuid from 'uuid/v4'
 import firebase from './firebase.js'
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 let database = firebase.database()
 
@@ -82,7 +82,8 @@ class AddContact extends Component {
         Organization: <input type='text' name='company' onChange={this.handleChange} />
         Job Title: <input type='text' name='title' onChange={this.handleChange} />
           <button className='submitButton' type='submit'>Submit</button>
-          <button className='cancelButton' onClick={this.props.notAddingContact}>Cancel</button>
+          {/* <button className='cancelButton' onClick={this.props.notAddingContact}>Cancel</button> */}
+          <Link to='/'>Cancel</Link>
         </form>
       </div>
     )

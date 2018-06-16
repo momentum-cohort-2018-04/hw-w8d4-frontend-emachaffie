@@ -16,7 +16,7 @@ class Dashboard extends Component {
     super()
     this.state = {
       loggedIn: true,
-      addingContact: false,
+      // addingContact: false,
       user: firebase.auth().currentUser
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
@@ -53,13 +53,13 @@ class Dashboard extends Component {
       var provider = new firebase.auth.GoogleAuthProvider()
       return (
         firebase.auth().signInWithRedirect(provider))
-    } else if (this.state.addingContact) {
-      return (
-        // <Router>
-        //   <AddContact />
-        // </Router>
-        <AddContact notAddingContact={this.notAddingContact.bind(this)} />)
-      // )
+    // } else if (this.state.addingContact) {
+    //   return (
+    //     // <Router>
+    //     //   <AddContact />
+    //     // </Router>
+    //     <AddContact notAddingContact={this.notAddingContact.bind(this)} />)
+    //   // )
     } else {
       return (
         // <Contacts addingContactFn={this.addingContactFn.bind(this)} />)
