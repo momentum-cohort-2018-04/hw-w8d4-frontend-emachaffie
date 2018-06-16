@@ -7,7 +7,7 @@ import LoginPage from './LoginPage'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
 import firebase from './firebase'
-// import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import 'firebase/auth'
 
 class Dashboard extends Component {
@@ -15,7 +15,7 @@ class Dashboard extends Component {
     let database = firebase.database()
     super()
     this.state = {
-      loggedIn: false,
+      loggedIn: true,
       addingContact: false,
       user: firebase.auth().currentUser
     }
@@ -25,11 +25,12 @@ class Dashboard extends Component {
   }
 
   componentDidMount () {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        user: user
-      })
-    })
+    // firebase.auth().onAuthStateChanged(user => {
+    //   this.setState({
+    //     user: user,
+    //     loggedIn: true
+    //   })
+    // })
   }
 
   changeLoggedInStatus (boo) {
@@ -54,10 +55,18 @@ class Dashboard extends Component {
         firebase.auth().signInWithRedirect(provider))
     } else if (this.state.addingContact) {
       return (
+        // <Router>
+        //   <AddContact />
+        // </Router>
         <AddContact notAddingContact={this.notAddingContact.bind(this)} />)
+      // )
     } else {
       return (
-        <Contacts password={this.state.password} username={this.state.username} addingContactFn={this.addingContactFn.bind(this)} />)
+        // <Contacts addingContactFn={this.addingContactFn.bind(this)} />)
+        <Router>
+          <Contacts />
+        </Router>
+      )
     }
   }
 }
