@@ -9,15 +9,21 @@ import AddContact from './AddContact'
 import firebase from './firebase'
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import Dashboard from './Dashboard'
-import EditContact from './EditContact';
+import EditContact from './EditContact'
 
 class App extends Component {
   constructor (props) {
     let database = firebase.database()
     super()
-    this.state = {
-    }
   }
+
+  // componentDidMount () {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     this.setState({
+  //       user: user
+  //     })
+  //   })
+  // }
 
   render () {
     return (
@@ -27,6 +33,7 @@ class App extends Component {
           <Route exact path='/contacts' component={Contacts} />
           <Route exact path='/add' component={AddContact} />
           <Route exact path='/edit/:id' component={EditContact} />
+          <Route exact path='/login' component={LoginPage} />
         </div>
       </Router>
     )

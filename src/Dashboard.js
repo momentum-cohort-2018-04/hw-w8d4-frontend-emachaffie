@@ -8,16 +8,16 @@ import LoginPage from './LoginPage'
 import AddContact from './AddContact'
 import firebase from './firebase'
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import 'firebase/auth'
 
 class Dashboard extends Component {
   constructor (props) {
     let database = firebase.database()
     super()
     this.state = {
-      password: localStorage.password,
-      username: localStorage.username,
-      loggedIn: true,
-      addingContact: false
+      loggedIn: false,
+      addingContact: false,
+      user: firebase.auth().currentUser
     }
     this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
     this.notAddingContact = this.notAddingContact.bind(this)
@@ -25,11 +25,11 @@ class Dashboard extends Component {
   }
 
   componentDidMount () {
-    if (this.state.username) {
-      this.changeLoggedInStatus(true)
-    } else {
-      this.changeLoggedInStatus(false)
-    }
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user: user
+      })
+    })
   }
 
   changeLoggedInStatus (boo) {
@@ -49,8 +49,9 @@ class Dashboard extends Component {
 
   render () {
     if (!this.state.loggedIn) {
+      var provider = new firebase.auth.GoogleAuthProvider()
       return (
-        <LoginPage changeLoggedInStatus={this.changeLoggedInStatus.bind(this)} />)
+        firebase.auth().signInWithRedirect(provider))
     } else if (this.state.addingContact) {
       return (
         <AddContact notAddingContact={this.notAddingContact.bind(this)} />)

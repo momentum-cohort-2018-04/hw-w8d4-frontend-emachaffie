@@ -2,9 +2,10 @@
 import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 // import { request } from 'https'
-import request from 'superagent'
+// import request from 'superagent'
 import './App.css'
 import firebase from './firebase.js'
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 let database = firebase.database()
 
@@ -52,8 +53,10 @@ class Contacts extends Component {
       <div className='contactListDisplay'>
         <h1 className='header'>Accio Contacts</h1>
         <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
-        <button className='addContactButton' onClick={this.props.addingContactFn}
-        >Add Contact</button>
+        {/* <button className='addContactButton' onClick={this.props.addingContactFn}
+        // Can use Link or keep as is nd push history on onClick
+        >Add Contact</button> */}
+        <Link to='/add'>Add Contact</Link>
         {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
