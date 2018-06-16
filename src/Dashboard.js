@@ -7,7 +7,7 @@ import LoginPage from './LoginPage'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
 import firebase from './firebase'
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+// import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import 'firebase/auth'
 
 class Dashboard extends Component {
