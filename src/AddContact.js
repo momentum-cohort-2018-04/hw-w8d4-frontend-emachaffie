@@ -74,7 +74,7 @@ class AddContact extends Component {
         Job Title: <input type='text' name='title' onChange={this.handleChange} />
           <button className='submitButton' type='submit'>Submit</button>
           {/* <button className='cancelButton' onClick={this.props.notAddingContact}>Cancel</button> */}
-          <Link to='/'>Cancel</Link>
+          <Link to='/'className='cancelButton fakeButton'>Cancel</Link>
         </form>
       </div>
     )

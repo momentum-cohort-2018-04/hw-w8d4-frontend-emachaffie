@@ -51,6 +51,7 @@ class Contacts extends Component {
     return (
       <div className='contactListDisplay'>
         <h1 className='header'>Accio Contacts</h1>
+        <img src='/images/wand.png' className='wandImage' />
         <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
         {/* <button className='addContactButton' onClick={this.props.addingContactFn}
         // Can use Link or keep as is nd push history on onClick
