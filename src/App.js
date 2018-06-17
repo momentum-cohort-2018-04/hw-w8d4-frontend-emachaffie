@@ -11,10 +11,10 @@ import Dashboard from './Dashboard'
 import EditContact from './EditContact'
 
 class App extends Component {
-  // constructor (props) {
-  //   let database = firebase.database()
-  //   super(props)
-  // }
+  constructor (props) {
+    let database = firebase.database()
+    super(props)
+  }
 
   // componentDidMount () {
   //   firebase.auth().onAuthStateChanged(user => {
