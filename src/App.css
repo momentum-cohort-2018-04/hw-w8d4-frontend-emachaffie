@@ -18,42 +18,6 @@ h2 {
   font-size: 1.8rem;
 }
 
-/* Login Form */
-
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.header {
-  font-family: 'Niconne', cursive;
-  font-size: 2rem;
-  color: #FFF;
-  background-color: #663867;
-  padding: 5px 40px;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.contactSubheaderText {
-  text-align: center;
-  /* font-weight: 600; */
-}
-
-.loginFormInput {
-  max-width: 80%;
-  margin: 10px 0;
-}
-
-.loginFormButton {
-  /* max-width: 30%; */
-  margin: 10px 0;
-  font-family: 'Niconne', cursive;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
 /* Contact Displays */
 
 .contactListDisplay {
@@ -71,10 +35,6 @@ h2 {
 .contactInfoDiv {
   margin: 0 40px;
 }
-
-/* .contactButtonDiv {
-  
-} */
 
 .name {
   font-weight: 500;
@@ -102,7 +62,7 @@ h2 {
   /* align-items: flex-start; */
 }
 
-.submitButton, .editButton, .addContactButton, .deleteButton, .cancelButton {
+.submitButton, .editButton, .addContactButton, .deleteButton, .cancelButton, .fakeButton {
   margin: 10px 0 0 0;
   font-family: 'Niconne', cursive;
   font-size: 1.2rem;
@@ -111,6 +71,13 @@ h2 {
   align-self: center;
   color: #FFF;
   background-color: #774178;
+  padding: 3px 50px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.fakeButton:hover {
+  cursor: pointer;
 }
 
 .deleteButton, .cancelButton {

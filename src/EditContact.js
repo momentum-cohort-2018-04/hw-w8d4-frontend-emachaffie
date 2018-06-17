@@ -26,22 +26,23 @@ class EditContact extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getContact = this.getContact.bind(this)
-    this.getContact()
+    // this.getContact()
   }
 
-  getContact () {
-    // query api for single contact
-    this.setState({
-      id: contact.id,
-      name: contact.name,
-      email: contact.email,
-      address: contact.address,
-      house: '',
-      birthday: '',
-      company: '',
-      title: ''
-    })
-  }
+  // getContact () {
+  //   // query api for single contact
+
+  //   this.setState({
+  //     id: contact.id,
+  //     name: contact.name,
+  //     email: contact.email,
+  //     address: contact.address,
+  //     house: '',
+  //     birthday: '',
+  //     company: '',
+  //     title: ''
+  //   })
+  // }
 
   handleChange (event) {
     const name = event.target.name

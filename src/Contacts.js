@@ -56,7 +56,7 @@ class Contacts extends Component {
         {/* <button className='addContactButton' onClick={this.props.addingContactFn}
         // Can use Link or keep as is nd push history on onClick
         >Add Contact</button> */}
-        <Link to='/add'>Add Contact</Link>
+        <Link to='/add' className='fakeButton addButton'>Add Contact</Link>
         {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
@@ -69,7 +69,7 @@ class Contacts extends Component {
               <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
             </div>
             <div className='contactButtonDiv'>
-              <Link to={`/edit/${contact.id}`} className='editButton'>Edit</Link>
+              <Link to={`/edit/${contact.id}`} className='fakeButton editButton'>Edit</Link>
               <button className='deleteButton' id={contact.id} onClick={() => this.deleteContact(contact.id)}
               >Delete</button>
             </div>
