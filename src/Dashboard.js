@@ -1,9 +1,7 @@
 /* global localStorage */
 import React, { Component } from 'react'
 import './App.css'
-// import request from 'superagent'
 import Contacts from './Contacts'
-import LoginPage from './LoginPage'
 // import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AddContact from './AddContact'
 import firebase from './firebase'
@@ -15,20 +13,19 @@ class Dashboard extends Component {
     let database = firebase.database()
     super()
     this.state = {
-      loggedIn: false,
-      // addingContact: false,
+      loggedIn: true,
       user: null
     }
   }
 
-  componentDidMount () {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        user: user,
-        loggedIn: true
-      })
-    })
-  }
+  // componentDidMount () {
+  //   firebase.auth().onAuthStateChanged(user => {
+  //     this.setState({
+  //       user: user,
+  //       loggedIn: true
+  //     })
+  //   })
+  // }
 
   render () {
     if (!this.state.loggedIn) {
@@ -37,7 +34,6 @@ class Dashboard extends Component {
         firebase.auth().signInWithRedirect(provider))
     } else {
       return (
-        // <Contacts addingContactFn={this.addingContactFn.bind(this)} />)
         <Contacts />
       )
     }
