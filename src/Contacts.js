@@ -15,7 +15,6 @@ class Contacts extends Component {
     this.state = {
       contacts: []
     }
-    // this.getContacts = this.getContacts.bind(this)
     this.deleteContact = this.deleteContact.bind(this)
   }
 

@@ -33,7 +33,6 @@ class App extends Component {
           <Route exact path='/contacts' component={Contacts} />
           <Route exact path='/add' component={AddContact} />
           <Route exact path='/edit/:id' component={EditContact} />
-          {/* <Route exact path='/login' component={LoginPage} /> */}
         </Switch>
       </Router>
     )

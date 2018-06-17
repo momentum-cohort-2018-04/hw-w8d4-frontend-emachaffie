@@ -15,51 +15,26 @@ class Dashboard extends Component {
     let database = firebase.database()
     super()
     this.state = {
-      loggedIn: true,
+      loggedIn: false,
       // addingContact: false,
-      user: firebase.auth().currentUser
+      user: null
     }
-    // this.changeLoggedInStatus = this.changeLoggedInStatus.bind(this)
-    // this.notAddingContact = this.notAddingContact.bind(this)
-    // this.addingContactFn = this.addingContactFn.bind(this)
   }
 
   componentDidMount () {
-    // firebase.auth().onAuthStateChanged(user => {
-    //   this.setState({
-    //     user: user,
-    //     loggedIn: true
-    //   })
-    // })
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user: user,
+        loggedIn: true
+      })
+    })
   }
-
-  // changeLoggedInStatus (boo) {
-  //   this.setState({loggedIn: boo})
-  //   console.log(this.state.loggedIn)
-  // }
-
-  // addingContactFn () {
-  //   this.setState({addingContact: true})
-  //   console.log('addingContact to true')
-  // }
-
-  // notAddingContact () {
-  //   this.setState({addingContact: false})
-  //   console.log('addingContact to false')
-  // }
 
   render () {
     if (!this.state.loggedIn) {
       var provider = new firebase.auth.GoogleAuthProvider()
       return (
         firebase.auth().signInWithRedirect(provider))
-    // } else if (this.state.addingContact) {
-    //   return (
-    //     // <Router>
-    //     //   <AddContact />
-    //     // </Router>
-    //     <AddContact notAddingContact={this.notAddingContact.bind(this)} />)
-    //   // )
     } else {
       return (
         // <Contacts addingContactFn={this.addingContactFn.bind(this)} />)
