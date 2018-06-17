@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import './App.css'
 import uuid from 'uuid/v4'
 import firebase from './firebase.js'
-import { BrowserRouter as Link, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 let database = firebase.database()
 
