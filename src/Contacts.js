@@ -51,11 +51,8 @@ class Contacts extends Component {
     return (
       <div className='contactListDisplay'>
         <h1 className='header'>Accio Contacts</h1>
-        <img src='/images/wand.png' className='wandImage' />
-        <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
-        {/* <button className='addContactButton' onClick={this.props.addingContactFn}
-        // Can use Link or keep as is nd push history on onClick
-        >Add Contact</button> */}
+        <img src='https://images.pottermore.com/bxd3o8b291gf/1iNLIKPMMAos48U6ywGas2/b5a6d1fd6c0677d567520cdfa34198a8/wand-black-quite_long-carved_handle.png?w=1200' className='wandImage' alt='wand' />
+        {/* <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p> */}
         <Link to='/add' className='fakeButton addButton'>Add Contact</Link>
         {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
