@@ -5,23 +5,42 @@ import request from 'superagent'
 import './App.css'
 import uuid from 'uuid/v4'
 import firebase from './firebase'
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+
+let database = firebase.database()
 
 class EditContact extends Component {
   constructor (props) {
-    super()
+    super(props)
     this.state = {
-      id: this.props.id,
+      id: '',
       name: '',
       email: '',
       address: '',
-      house: null,
-      birthday: null,
+      house: '',
+      birthday: '',
       company: '',
       title: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getContact = this.getContact.bind(this)
+    this.getContact()
+  }
+
+  getContact () {
+    // query api for single contact
+    this.setState({
+      id: contact.id,
+      name: contact.name,
+      email: contact.email,
+      address: contact.address,
+      house: '',
+      birthday: '',
+      company: '',
+      title: ''
+    })
   }
 
   handleChange (event) {
@@ -32,39 +51,33 @@ class EditContact extends Component {
     this.setState({[name]: value})
   }
 
-  // handleSubmit (event) {
-  //   // const newId = parseInt(uuid())
-  //   // this.setState({id: newId})
-  //   const body = {
-  //     id: this.state.id,
-  //     name: this.state.name,
-  //     email: this.state.email,
-  //     address: this.state.address,
-  //     house: this.state.house,
-  //     birthday: this.state.birthday,
-  //     company: this.state.company,
-  //     title: this.state.title}
-  //   console.log(body)
-  //   event.preventDefault()
-  //   request
-  //     .put(`http://localhost:8000/contacts/${id}`)
-  //     .auth(localStorage.username, localStorage.password)
-  //     .send(body)
-  //     .end()
-  //   this.props.notAddingContact()
-  // }
+  handleSubmit (event) {
+    event.preventDefault()
+    console.log('submitting')
+    // const contactList = database.ref('contacts/')
+    var editedContact = firebase.database().ref('contacts/this.state.id')
+    editedContact.set({
+      name: this.state.name,
+      email: this.state.email,
+      address: this.state.address,
+      house: this.state.house,
+      birthday: this.state.birthday,
+      company: this.state.company,
+      title: this.state.title
+    })
+    this.props.history.push('/')
+  }
 
   render () {
     return (
       <div>
-        <h2>Add a Contact</h2>
-        <p>You may add with the spell 'addendum contacto'. Muggles and those who have not passed Year 3 Incantations, please fill out this form.</p>
+        <h2>Edit Your Contact</h2>
         <form type='submit' onSubmit={this.handleSubmit}>
-        Name: <input type='text' name='name' onChange={this.handleChange} value={this.props.name} />
-        Email: <input type='text' name='email' onChange={this.handleChange} value={this.props.email} />
-        Address: <input type='text' name='address' onChange={this.handleChange} value={this.props.address} />
-        Hogwarts House: <select name='house' onChange={this.handleChange} value={this.props.house} />
-          <select name='house' onChange={this.handleChange}>
+        Name: <input type='text' name='name' onChange={this.handleChange} value={this.state.name} />
+        Email: <input type='text' name='email' onChange={this.handleChange} value={this.state.email} />
+        Address: <input type='text' name='address' onChange={this.handleChange} value={this.state.address} />
+        Hogwarts House: <select name='house' onChange={this.handleChange} value={this.state.house} />
+          <select name='house' value={this.state.house} onChange={this.handleChange}>
             <option value='No House'>No House</option>
             <option value='Gryffindor'>Gryffindor</option>
             <option value='Hufflepuff'>Hufflepuff</option>

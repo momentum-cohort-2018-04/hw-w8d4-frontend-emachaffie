@@ -15,7 +15,7 @@ class Dashboard extends Component {
     let database = firebase.database()
     super()
     this.state = {
-      loggedIn: false,
+      loggedIn: true,
       // addingContact: false,
       user: firebase.auth().currentUser
     }
@@ -25,12 +25,12 @@ class Dashboard extends Component {
   }
 
   componentDidMount () {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        user: user,
-        loggedIn: true
-      })
-    })
+    // firebase.auth().onAuthStateChanged(user => {
+    //   this.setState({
+    //     user: user,
+    //     loggedIn: true
+    //   })
+    // })
   }
 
   // changeLoggedInStatus (boo) {

@@ -69,8 +69,7 @@ class Contacts extends Component {
               <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
             </div>
             <div className='contactButtonDiv'>
-              <button className='editButton' // onClick={<EditContact {contactList=this.state.contactList} />}//
-              >Edit</button>
+              <Link to={`/edit/${contact.id}`} className='editButton'>Edit</Link>
               <button className='deleteButton' id={contact.id} onClick={() => this.deleteContact(contact.id)}
               >Delete</button>
             </div>

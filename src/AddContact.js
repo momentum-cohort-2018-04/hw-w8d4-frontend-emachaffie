@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import './App.css'
 import uuid from 'uuid/v4'
 import firebase from './firebase.js'
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { BrowserRouter as Link, NavLink } from 'react-router-dom'
 
 let database = firebase.database()
 
@@ -49,17 +49,8 @@ class AddContact extends Component {
       title: this.state.title
     }
     newContactList.push(newContact)
-    this.props.notAddingContact()
+    this.props.history.push('/')
   }
-
-  // Example from site 
-  // function writeUserData(userId, name, email, imageUrl) {
-  //   firebase.database().ref('users/' + userId).set({
-  //     username: name,
-  //     email: email,
-  //     profile_picture : imageUrl
-  //   });
-  // }
 
   render () {
     return (
