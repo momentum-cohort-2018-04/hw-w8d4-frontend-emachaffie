@@ -1,11 +1,7 @@
-/* global localStorage */
 import React, { Component } from 'react'
 import './App.css'
 import Contacts from './Contacts'
-// import { BrowserRouter as Router, Route } from 'react-router-dom'
-import AddContact from './AddContact'
-import firebase from './firebase'
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import firebase, { auth, provider } from './firebase'
 import 'firebase/auth'
 
 class Dashboard extends Component {
@@ -29,9 +25,14 @@ class Dashboard extends Component {
 
   render () {
     if (!this.state.loggedIn) {
-      var provider = new firebase.auth.GoogleAuthProvider()
       return (
-        firebase.auth().signInWithRedirect(provider))
+        firebase.auth().signInWithRedirect(provider)
+          .then((result) => {
+            this.setState({
+              user: result.user,
+              loggedIn: true
+            })
+          }))
     } else {
       return (
         <Contacts />

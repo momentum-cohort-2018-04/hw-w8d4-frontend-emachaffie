@@ -94,7 +94,7 @@ h2 {
   text-align: center;
 }
 
-.fakeButton:hover {
+.fakeButton:hover, .deleteButton:hover {
   cursor: pointer;
 }
 
