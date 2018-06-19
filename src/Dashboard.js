@@ -3,36 +3,15 @@ import './App.css'
 import Contacts from './Contacts'
 import firebase, { auth, provider } from './firebase'
 import 'firebase/auth'
+import Login from './Login'
 
 class Dashboard extends Component {
-  constructor (props) {
-    let database = firebase.database()
-    super()
-    this.state = {
-      loggedIn: true,
-      user: null
-    }
-  }
-
-  // componentDidMount () {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     this.setState({
-  //       user: user,
-  //       loggedIn: true
-  //     })
-  //   })
-  // }
-
   render () {
-    if (!this.state.loggedIn) {
+    if (!this.props.user) {
       return (
-        firebase.auth().signInWithRedirect(provider)
-          .then((result) => {
-            this.setState({
-              user: result.user,
-              loggedIn: true
-            })
-          }))
+        <Login />
+        // Look at redirect of router?
+      )
     } else {
       return (
         <Contacts />

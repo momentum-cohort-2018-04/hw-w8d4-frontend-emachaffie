@@ -62,7 +62,7 @@ class EditContact extends Component {
     console.log('submitting')
     // const contactList = database.ref('contacts/')
     var editedContact = firebase.database().ref('contacts/this.state.id')
-    editedContact.set({
+    editedContact.update({
       name: this.state.name,
       email: this.state.email,
       address: this.state.address,
