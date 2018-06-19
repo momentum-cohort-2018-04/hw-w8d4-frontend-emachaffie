@@ -1,9 +1,5 @@
-/* global localStorage */
-import Dashboard from './Dashboard'
 import React, { Component } from 'react'
-import request from 'superagent'
 import './App.css'
-import uuid from 'uuid/v4'
 import firebase from './firebase'
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 

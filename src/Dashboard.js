@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
 import Contacts from './Contacts'
-import firebase, { auth, provider } from './firebase'
 import 'firebase/auth'
 import Login from './Login'
 
@@ -10,7 +9,7 @@ class Dashboard extends Component {
     if (!this.props.user) {
       return (
         <Login />
-        // Look at redirect of router?
+        // Look at redirect of Router?
       )
     } else {
       return (

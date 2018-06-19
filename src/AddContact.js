@@ -1,10 +1,8 @@
-/* global localStorage */
 import React, { Component } from 'react'
-// import request from 'superagent'
 import './App.css'
 import uuid from 'uuid/v4'
 import firebase from './firebase.js'
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { BrowserRouter as Link } from 'react-router-dom'
 
 let database = firebase.database()
 
@@ -53,6 +51,9 @@ class AddContact extends Component {
   }
 
   render () {
+    // return (
+    //   null
+    // )
     return (
       <div>
         <h2 className='header'>Add a Contact</h2>
@@ -74,7 +75,7 @@ class AddContact extends Component {
         Job Title: <input type='text' name='title' onChange={this.handleChange} />
           <button className='submitButton' type='submit'>Submit</button>
           {/* <button className='cancelButton' onClick={this.props.notAddingContact}>Cancel</button> */}
-          <Link to='/'className='cancelButton fakeButton'>Cancel</Link>
+          <Link to='/'><button className='cancelButton fakeButton'>Cancel</button></Link>
         </form>
       </div>
     )

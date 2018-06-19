@@ -1,9 +1,8 @@
-import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 import './App.css'
 import firebase, { auth, provider } from './firebase'
 import 'firebase/auth'
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+// import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 let database = firebase.database()
 

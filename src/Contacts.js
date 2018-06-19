@@ -1,11 +1,9 @@
-/* global localStorage */
-import Dashboard from './Dashboard'
 import React, { Component } from 'react'
 // import { request } from 'https'
 // import request from 'superagent'
 import './App.css'
 import firebase from './firebase.js'
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
+import { BrowserRouter as Link } from 'react-router-dom'
 
 let database = firebase.database()
 
@@ -21,7 +19,7 @@ class Contacts extends Component {
   componentDidMount () {
     console.log('loading contacts')
     const contactsList = database.ref('contacts')
-    contactsList.on('value', (snapshot) => {
+    contactsList.once('value').then((snapshot) => {
       let contacts = snapshot.val()
       let newState = []
       for (let contact in contacts) {
@@ -48,12 +46,13 @@ class Contacts extends Component {
   }
 
   render () {
+    // return <div>Hello</div>
     return (
       <div className='contactListDisplay'>
         <h1 className='header'>Accio Contacts</h1>
         <img src='https://images.pottermore.com/bxd3o8b291gf/1iNLIKPMMAos48U6ywGas2/b5a6d1fd6c0677d567520cdfa34198a8/wand-black-quite_long-carved_handle.png?w=1200' className='wandImage' alt='wand' />
-        {/* <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p> */}
-        <Link to='/add' className='fakeButton addButton'>Add Contact</Link>
+        <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
+        <Link to='/add'><button className='fakeButton addButton'>Add Contact</button></Link>
         {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>
@@ -66,7 +65,7 @@ class Contacts extends Component {
               <p className='title'><span className='textSpan'>Job Title: </span>{contact.title}</p>
             </div>
             <div className='contactButtonDiv'>
-              <Link to={`/edit/${contact.id}`} className='fakeButton editButton'>Edit</Link>
+              <Link to={`/edit/${contact.id}`}><button className='fakeButton editButton'>Edit</button></Link>
               <button className='deleteButton' id={contact.id} onClick={() => this.deleteContact(contact.id)}
               >Delete</button>
             </div>
