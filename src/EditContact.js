@@ -91,8 +91,8 @@ class EditContact extends Component {
   handleSubmit (event) {
     event.preventDefault()
     console.log('submitting')
-    // const contactList = database.ref('contacts/')
-    var editedContact = firebase.database().ref('contacts/this.state.id')
+    const contactId = this.props.match.params.id
+    var editedContact = firebase.database().ref('/contacts/' + contactId)
     editedContact.update({
       name: this.state.name,
       email: this.state.email,
@@ -109,7 +109,7 @@ class EditContact extends Component {
     return (
       <div>
         <h2>Edit Your Contact</h2>
-        <form type='submit' onSubmit={this.handleSubmit}>
+        <form className='addContactForm' type='submit' onSubmit={this.handleSubmit}>
         Name: <input type='text' name='name' onChange={this.handleChange} value={this.state.name} />
         Email: <input type='text' name='email' onChange={this.handleChange} value={this.state.email} />
         Address: <input type='text' name='address' onChange={this.handleChange} value={this.state.address} />
