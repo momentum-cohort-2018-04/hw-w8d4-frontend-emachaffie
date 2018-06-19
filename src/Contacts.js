@@ -41,6 +41,7 @@ class Contacts extends Component {
   }
 
   deleteContact (contactId) {
+    console.log('delete clicked')
     const contactToRemove = database.ref(`/contacts/${contactId}`)
     contactToRemove.remove()
   }
@@ -51,8 +52,7 @@ class Contacts extends Component {
       <div className='contactListDisplay'>
         <h1 className='header'>Accio Contacts</h1>
         <img src='https://images.pottermore.com/bxd3o8b291gf/1iNLIKPMMAos48U6ywGas2/b5a6d1fd6c0677d567520cdfa34198a8/wand-black-quite_long-carved_handle.png?w=1200' className='wandImage' alt='wand' />
-        <p className='contactSubheaderText'>Keep Track of Your Magical and Muggle Friends</p>
-        <Link to='/add'><button className='fakeButton addButton'>Add Contact</button></Link>
+        <Link to='/add' className='fakeButton addButton'>Add Contact</Link>
         {this.state.contacts.map((contact) => (
           <div key={contact.id} className='contactDiv'>
             <h3 className='name'>{contact.name}</h3>

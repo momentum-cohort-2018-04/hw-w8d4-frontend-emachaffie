@@ -9,7 +9,6 @@ class EditContact extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      id: '',
       name: '',
       email: '',
       address: '',
@@ -18,32 +17,68 @@ class EditContact extends Component {
       company: '',
       title: ''
     }
-
-    // this.handleChange = this.handleChange.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
-    // this.getContact = this.getContact.bind(this)
-    // this.getContact()
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.getContact = this.getContact.bind(this)
+    this.getContact()
   }
 
-  // getContact () {
-    // this.database.ref('/contacts/harry-potter/house').once('value').then(
-    // this.setState({
-    //   id: contact.id,
-    //   name: contact.name,
-    //   email: contact.email,
-    //   address: contact.address,
-    //   house: '',
-    //   birthday: '',
-    //   company: '',
-    //   title: ''
-    // })
-      // console.log(contact.id))
-  // }
+  getContact () {
+    console.log(this.props)
+    const contactId = this.props.match.params.id
+    return (
+      firebase.database().ref('/contacts/' + contactId)
+        .once('value')
+        .then((snapshot) => {
+          console.log(snapshot.val())
+          console.log(snapshot.val().name)
 
-// From AddContact.... 
-// const contactsList = database.ref('contacts')
-//     contactsList.on('value', (snapshot) => {
-//       let contacts = snapshot.val()
+          // var name = snapshot.val().name
+          // var email = snapshot.val().email
+          // var address = snapshot.val().address
+          // var house = snapshot.val().house
+          // var birthday = snapshot.val().birthday
+          // var company = snapshot.val().company
+          // var title = snapshot.val().title
+          this.setState({
+            name: snapshot.val().name,
+            email: snapshot.val().email,
+            address: snapshot.val().address,
+            house: snapshot.val().house,
+            birthday: snapshot.val().birthday,
+            company: snapshot.val().company,
+            title: snapshot.val().title
+          })
+        }
+        )
+    )
+  }
+
+  // firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  //   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  //   // ...
+  // });
+
+  // const contactsList = database.ref('contacts')
+  //   contactsList.once('value').then((snapshot) => {
+  //     let contacts = snapshot.val()
+  //     let newState = []
+  //     for (let contact in contacts) {
+  //       newState.push({
+  //         id: contact,
+  //         name: contacts[contact].name,
+  //         email: contacts[contact].email,
+  //         address: contacts[contact].address,
+  //         house: contacts[contact].house,
+  //         birthday: contacts[contact].birthday,
+  //         company: contacts[contact].company,
+  //         title: contacts[contact].title
+  //       })
+  //     }
+  //     this.setState({
+  //       contacts: newState
+  //     })
+  //   })
 
   handleChange (event) {
     const name = event.target.name
@@ -78,7 +113,7 @@ class EditContact extends Component {
         Name: <input type='text' name='name' onChange={this.handleChange} value={this.state.name} />
         Email: <input type='text' name='email' onChange={this.handleChange} value={this.state.email} />
         Address: <input type='text' name='address' onChange={this.handleChange} value={this.state.address} />
-        Hogwarts House: <select name='house' onChange={this.handleChange} value={this.state.house} />
+        Hogwarts House:
           <select name='house' value={this.state.house} onChange={this.handleChange}>
             <option value='No House'>No House</option>
             <option value='Gryffindor'>Gryffindor</option>
@@ -86,9 +121,9 @@ class EditContact extends Component {
             <option value='Ravenclaw'>Ravenclaw</option>
             <option value='Slytherin'>Slytherin</option>
           </select>
-        Birthday: <input type='text' name='birthday' onChange={this.handleChange} />
-        Organization: <input type='text' name='company' onChange={this.handleChange} />
-        Job Title: <input type='text' name='title' onChange={this.handleChange} />
+        Birthday: <input type='text' name='birthday' onChange={this.handleChange} value={this.state.birthday} />
+        Organization: <input type='text' name='company' onChange={this.handleChange} value={this.state.company} />
+        Job Title: <input type='text' name='title' onChange={this.handleChange} value={this.state.title} />
           <button type='submit'>Submit</button>
         </form>
       </div>

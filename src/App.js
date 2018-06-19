@@ -12,7 +12,7 @@ import Login from './Login'
 
 class App extends Component {
   constructor (props) {
-    let database = firebase.database()
+    // let database = firebase.database()
     super(props)
     this.state = {
       user: null
@@ -42,8 +42,7 @@ class App extends Component {
           <Route exact path='/login' render={({history}) => <Login history={history} updateLogin={this.updateLogin} />} />
           <Route exact path='/contacts' render={({history}) => <Contacts history={history} />} />
           <Route exact path='/add' render={({history}) => <AddContact history={history} />} />
-          <Route exact path='/edit/:id' render={({history}) => <EditContact history={history} />} />
-  {/* // Pass props using 'render' and function with props instead of component AND pass user to any page that needs it*/}
+          <Route exact path='/edit/:id' render={(props) => <EditContact {...props} />} />
         </Switch>
       </Router>
     )

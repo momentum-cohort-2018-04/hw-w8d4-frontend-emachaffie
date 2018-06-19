@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import uuid from 'uuid/v4'
 import firebase from './firebase.js'
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 let database = firebase.database()
 
@@ -51,9 +51,6 @@ class AddContact extends Component {
   }
 
   render () {
-    // return (
-    //   null
-    // )
     return (
       <div>
         <h2 className='header'>Add a Contact</h2>
@@ -64,7 +61,7 @@ class AddContact extends Component {
         Address: <input type='text' name='address' onChange={this.handleChange} />
         Hogwarts House:
           <select name='house' onChange={this.handleChange}>
-            <option value='None'>No House</option>
+            <option value='NoHouse'>No House</option>
             <option value='Gryffindor'>Gryffindor</option>
             <option value='Hufflepuff'>Hufflepuff</option>
             <option value='Ravenclaw'>Ravenclaw</option>
