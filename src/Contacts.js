@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 // import request from 'superagent'
 import './App.css'
 import firebase from './firebase.js'
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 let database = firebase.database()
 
